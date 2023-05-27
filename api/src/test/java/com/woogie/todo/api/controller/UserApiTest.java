@@ -1,31 +1,18 @@
 package com.woogie.todo.api.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.woogie.todo.api.controller.dto.CreateUserReq;
+import com.woogie.todo.api.support.BaseApiTest;
 import com.woogie.todo.core.user.domain.UserRepository;
 import com.woogie.todo.core.user.domain.UserStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Transactional
-@AutoConfigureMockMvc
-@SpringBootTest
-class UserApiTest {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
+class UserApiTest extends BaseApiTest {
 
     @Autowired
     private UserRepository userRepository;

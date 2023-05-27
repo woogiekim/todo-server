@@ -38,4 +38,7 @@ public interface TodoRepository {
 
     @Select("select * from todo")
     List<Todo> findAll();
+
+    @Select("select * from todo where user_id = #{userId}")
+    List<Todo> findAllByUserId(long userId);
 }
