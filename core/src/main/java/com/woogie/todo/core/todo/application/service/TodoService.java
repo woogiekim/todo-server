@@ -7,8 +7,10 @@ import com.woogie.todo.core.todo.domain.TodoRepository;
 import com.woogie.todo.core.user.domain.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class TodoService implements CreateTodo, CompleteTodo {
 

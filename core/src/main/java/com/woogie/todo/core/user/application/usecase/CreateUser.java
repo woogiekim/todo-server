@@ -4,11 +4,13 @@ import com.woogie.todo.core.support.SelfValidating;
 import com.woogie.todo.core.user.domain.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
 
 public interface CreateUser {
 
     void create(CreateUserCommand command);
 
+    @Getter
     class CreateUserCommand extends SelfValidating {
 
         @Email
