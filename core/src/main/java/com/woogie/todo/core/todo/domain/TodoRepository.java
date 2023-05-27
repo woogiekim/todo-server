@@ -16,6 +16,17 @@ public interface TodoRepository {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void save(Todo todo);
 
+    @Update("""
+            update todo set
+                title = #{title},
+                description = #{description},
+                startTime = #{startTime},
+                endTime = #{endTime},
+                status = #{status}
+            where id = #{id}
+            """)
+    void update(Todo todo);
+
     @Select("select * from todo where id = #{id}")
     @Results({
             @Result(property = "user", column = "user_id", one = @One(select = "getUser"))
