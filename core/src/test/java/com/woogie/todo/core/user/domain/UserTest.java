@@ -22,26 +22,20 @@ class UserTest {
     }
 
     @Test
-    void 유저생성_실패__이메일이_공백인_경우() {
-        var blankEmail = " ";
-
+    void 유저생성_실패__이메일이_널인_경우() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new User(blankEmail, "김태욱", "1234"));
+                .isThrownBy(() -> new User(null, "김태욱", "1234"));
     }
 
     @Test
-    void 유저생성_실패__이름이_공백인_경우() {
-        var blankName = " ";
-
+    void 유저생성_실패__이름이_널인_경우() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new User("wook@naver.com", blankName, "1234"));
+                .isThrownBy(() -> new User("wook@naver.com", null, "1234"));
     }
 
     @Test
-    void 유저생성_실패__비밀번호가_공백인_경우() {
-        var blankPassword = " ";
-
+    void 유저생성_실패__비밀번호가_널인_경우() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new User("wook@naver.com", "김태욱", blankPassword));
+                .isThrownBy(() -> new User("wook@naver.com", "김태욱", null));
     }
 }
