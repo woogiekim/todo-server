@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+    }
+}
+
+subprojects {
+    apply {
+        plugin('java')
+        plugin('org.springframework.boot')
+        plugin('io.spring.dependency-management')
+    }
+
+    group = 'com.woogie'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '17'
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
+
+        compileOnly 'org.projectlombok:lombok'
+
+        annotationProcessor 'org.projectlombok:lombok'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+}
+
+project(':core') {
+    dependencies {
+        runtimeOnly 'com.mysql:mysql-connector-j'
+
+        testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.1'
+    }
+}
+
+project(':api') {
+    dependencies {
+        implementation 'org.flywaydb:flyway-core'
+        implementation 'org.flywaydb:flyway-mysql'
+
+        runtimeOnly 'com.mysql:mysql-connector-j'
+    }
+}
