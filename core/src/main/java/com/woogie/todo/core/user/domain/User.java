@@ -2,6 +2,7 @@ package com.woogie.todo.core.user.domain;
 
 import com.woogie.todo.core.support.BaseEntity;
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.Assert;
@@ -9,6 +10,7 @@ import org.springframework.util.Assert;
 import java.time.OffsetDateTime;
 
 @Getter
+@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class User extends BaseEntity {
 
