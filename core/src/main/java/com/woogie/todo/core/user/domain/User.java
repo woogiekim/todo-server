@@ -18,10 +18,10 @@ public class User {
     private UserStatus status;
     private OffsetDateTime createdAt;
 
-    public User(String email, String name, String password) {
-        Assert.isTrue(!email.isBlank(), "이메일 공백 허용 안함");
-        Assert.isTrue(!name.isBlank(), "이름 공백 허용 안함");
-        Assert.isTrue(!password.isBlank(), "비밀번호 공백 허용 안함");
+    public User(@NonNull String email, String name, String password) {
+        Assert.notNull(email, "email is null");
+        Assert.notNull(name, "name is null");
+        Assert.notNull(password, "password is null");
 
         this.email = email;
         this.name = name;
