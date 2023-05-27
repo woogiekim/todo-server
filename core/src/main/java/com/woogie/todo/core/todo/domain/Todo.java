@@ -37,4 +37,10 @@ public class Todo extends BaseEntity {
         this.status = TodoStatus.IN_PROGRESS;
         this.createdAt = OffsetDateTime.now();
     }
+
+    public void complete() {
+        Assert.state(this.status == TodoStatus.IN_PROGRESS, "The status is already completed");
+
+        this.status = TodoStatus.COMPLETED;
+    }
 }

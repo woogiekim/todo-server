@@ -64,4 +64,31 @@ class TodoTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Todo(user, "title", "description", now, now.minusSeconds(1)));
     }
+
+    @Test
+    void 투두완료_성공() {
+        var user = new User("wook@naver.com", "김태욱", "1234");
+        var now = OffsetDateTime.now();
+
+        var todo = new Todo(user, "title", "description", now, now);
+
+        assertThat(todo.getStatus()).isEqualTo(TodoStatus.IN_PROGRESS);
+
+        todo.complete();
+
+        assertThat(todo.getStatus()).isEqualTo(TodoStatus.COMPLETED);
+    }
+
+    @Test
+    void 투두완료_실패__이미_완료된_경우() {
+        var user = new User("wook@naver.com", "김태욱", "1234");
+        var now = OffsetDateTime.now();
+
+        var todo = new Todo(user, "title", "description", now, now);
+
+        todo.complete();
+
+        assertThatIllegalStateException()
+                .isThrownBy(todo::complete);
+    }
 }
